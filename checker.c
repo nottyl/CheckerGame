@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int winning = 0;
-int inputY = 0, outputY = 0;
+int inputX = 0, inputY = 0, outputX = 0, outputY = 0;
 int board[17][25];
 int boardNum[17] = {1, 2, 3, 4, 13, 12, 11, 10, 9,
                     10, 11, 12, 13, 4, 3, 2, 1};
@@ -137,7 +137,7 @@ int checkerWinning(int input){
     else if(input == 1){
         int a = 25;
         int count = 0;
-        for(int i = 13; i < 18; i++){
+        for(int i = 13; i < 17; i++){
             for(int k = 0; k < a; k++){
                 if(board[i][k] == 3){
                     count++;
@@ -186,9 +186,20 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                 }
             }
             if(board[x][y] == 3){
-                printf("Valid input!\n");
-                inputY = y;
-                return 0;
+                if(board[x][y+2]==0||board[x][y-2]==0||board[x+1][y-1]==0||board[x+1][y+1]==0||board[x-1][y+1]==0||board[x-1][y-1]==0){
+                    inputX = x;
+                    inputY = y;
+                    return 0;
+                }
+                else if(board[x][y+4]==0 || board[x][y-4]==0 || board[x+2][y-1]==0 || board[x+2][y+1]==0 || board[x-2][y+1]==0 || board[x-2][y-1]==0){
+                    inputX = x;
+                    inputY = y;
+                    return 0;
+                }
+                else{
+                    printf("No moves can be made! Please enter again.\n");
+                    return 1;
+                }
             }
             else{
                 printf("Invalid Input! Please enter again.\n");
@@ -207,9 +218,20 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                 }
             }
             if(board[x][y] == 0){
-                printf("Valid input!\n");
-                outputY = y;
-                return 0;
+                if(x==inputX && (y==inputY+2 || y==inputY-2) ||
+                   (x==inputX-1 || x==inputX+1) && (y==inputY-1 || y==inputY+1)){
+                    outputY = y;
+                    return 0;
+                }
+                else if((x==inputX+2 || x==inputX-2) && (y==inputY+2 || y==inputY-2) ||
+                x==inputX && (y==inputY-4 || y==inputY+4)){
+                    outputY = y;
+                    return 0;
+                }
+                else{
+                    printf("Invalid Input! Please enter again.\n");
+                    return 1;
+                }
             }
             else{
                 printf("Invalid Input! Please enter again.\n");
@@ -230,9 +252,20 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                 }
             }
             if(board[x][y] == 2){
-                printf("Valid input!\n");
-                inputY = y;
-                return 0;
+                if(board[x][y+2]==0||board[x][y-2]==0||board[x+1][y-1]==0||board[x+1][y+1]==0||board[x-1][y+1]==0||board[x-1][y-1]==0){
+                    inputX = x;
+                    inputY = y;
+                    return 0;
+                }
+                else if(board[x][y+4]==0 || board[x][y-4]==0 || board[x+2][y-1]==0 || board[x+2][y+1]==0 || board[x-2][y+1]==0 || board[x-2][y-1]==0){
+                    inputX = x;
+                    inputY = y;
+                    return 0;
+                }
+                else{
+                    printf("No moves can be made! Please enter again.\n");
+                    return 1;
+                }
             }
             else{
                 printf("Invalid Input! Please enter again.\n");
@@ -251,9 +284,20 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                 }
             }
             if(board[x][y] == 0){
-                printf("Valid input!\n");
-                outputY = y;
-                return 0;
+                if(x==inputX && (y==inputY+2 || y==inputY-2) ||
+                   (x==inputX-1 || x==inputX+1) && (y==inputY-1 || y==inputY+1)){
+                    outputY = y;
+                    return 0;
+                }
+                else if((x==inputX+2 || x==inputX-2) && (y==inputY+2 || y==inputY-2) ||
+                        x==inputX && (y==inputY-4 || y==inputY+4)){
+                    outputY = y;
+                    return 0;
+                }
+                else{
+                    printf("Invalid Input! Please enter again.\n");
+                    return 1;
+                }
             }
             else{
                 printf("Invalid Input! Please enter again.\n");
@@ -274,9 +318,20 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                 }
             }
             if(board[x][y] == 1){
-                printf("Valid input!\n");
-                inputY = y;
-                return 0;
+                if(board[x][y+2]==0||board[x][y-2]==0||board[x+1][y-1]==0||board[x+1][y+1]==0||board[x-1][y+1]==0||board[x-1][y-1]==0){
+                    inputX = x;
+                    inputY = y;
+                    return 0;
+                }
+                else if(board[x][y+4]==0 || board[x][y-4]==0 || board[x+2][y-1]==0 || board[x+2][y+1]==0 || board[x-2][y+1]==0 || board[x-2][y-1]==0){
+                    inputX = x;
+                    inputY = y;
+                    return 0;
+                }
+                else{
+                    printf("No moves can be move! Please enter again.\n");
+                    return 1;
+                }
             }
             else{
                 printf("Invalid Input! Please enter again.\n");
@@ -295,9 +350,20 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                 }
             }
             if(board[x][y] == 0){
-                printf("Valid input!\n");
-                outputY = y;
-                return 0;
+                if(x==inputX && (y==inputY+2 || y==inputY-2) ||
+                   (x==inputX-1 || x==inputX+1) && (y==inputY-1 || y==inputY+1)){
+                    outputY = y;
+                    return 0;
+                }
+                else if((x==inputX+2 || x==inputX-2) && (y==inputY+2 || y==inputY-2) ||
+                        x==inputX && (y==inputY-4 || y==inputY+4)){
+                    outputY = y;
+                    return 0;
+                }
+                else{
+                    printf("Invalid Input! Please enter again.\n");
+                    return 1;
+                }
             }
             else{
                 printf("Invalid Input! Please enter again.\n");
@@ -307,9 +373,9 @@ int checkerValidity(int x, int y, int playerTurn, int io){
     }
 }
 
-void checkerMove(int inputX, int outputX, int color){
-    board[inputX][inputY] = 0;
-    board[outputX][outputY] = color;
+void checkerMove(int iX, int oX, int color){
+    board[iX][inputY] = 0;
+    board[oX][outputY] = color;
 }
 
 int checkerGame(int input){
