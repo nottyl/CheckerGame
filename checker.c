@@ -119,17 +119,15 @@ int checkerWinning(int input){
     if(input == 0){
         int a = 7;
         int count = 0;
-        for(int i=5; i<9; i++){
-            for(int j=0; j<4; j++){
-                for(int k=0; k<a; k++){
-                    if(board[i][k]==1){
+        for(int i = 5; i < 9; i++){
+                for(int k = 0; k < a; k++){
+                    if(board[i][k] == 1){
                         count++;
                     }
                 }
-            }
             a--;
         }
-        if(count==10){
+        if(count == 10){
             return 1;
         }
         else{
@@ -139,17 +137,15 @@ int checkerWinning(int input){
     else if(input == 1){
         int a = 25;
         int count = 0;
-        for(int i=5; i<9; i++){
-            for(int j=0; j<4; j++){
-                for(int k=0; k<a; k++){
-                    if(board[i][k]==2){
-                        count++;
-                    }
+        for(int i = 13; i < 18; i++){
+            for(int k = 0; k < a; k++){
+                if(board[i][k] == 3){
+                    count++;
                 }
             }
             a--;
         }
-        if(count==10){
+        if(count == 10){
             return 1;
         }
         else{
@@ -157,19 +153,17 @@ int checkerWinning(int input){
         }
     }
     else if(input == 2){
-        int a = 15;
+        int a = 17;
         int count = 0;
-        for(int i=13; i<18; i++){
-            for(int j=0; j<4; j++){
-                for(int k=0; k<a; k++){
-                    if(board[i][k]==3){
-                        count++;
-                    }
+        for(int i = 5; i < 9; i++){
+            for(int k = 25; k > a; k--){
+                if(board[i][k] == 2){
+                    count++;
                 }
             }
-            a--;
+            a++;
         }
-        if(count==10){
+        if(count == 10){
             return 1;
         }
         else{
