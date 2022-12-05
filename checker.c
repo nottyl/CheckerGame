@@ -129,46 +129,6 @@ int checkerWinning(int input){
     }
 }
 
-void inputValidity(int x, int y, int player, int io){
-    if(io == 0){
-        y = y + 1;
-        int i = 0;
-        while(y != 0){
-            if(board[x][i] != -1){
-                y--;
-                i++;
-                printf("board[%d][%d]", x, i);
-            }
-            else{
-                i = i;
-            }
-        }
-        if(board[x][i - 1] == 3){
-            printf("Valid point entered\n");
-        }
-        else{
-            printf("Invalid point entered\n");
-        }
-    }
-    else if(io == 1){
-        int checkY = y + 1;
-        int i = 0;
-        x -= 1;
-        while(checkY != 0){
-            if(board[x][i] != -1){
-                checkY--;
-                i++;
-            }
-        }
-        if(board[x][i - 1] == 0){
-            printf("Valid point entered\n");
-        }
-        else{
-            printf("Invalid point entered\n");
-        }
-    }
-}
-
 int checkerGame(int input){
     int playerTurn = input % 3;
     int iptX = 0, iptY = 0, optX = 0, optY = 0;
@@ -179,7 +139,6 @@ int checkerGame(int input){
             printf("Yellow Player Turn:\n");
             printf("From: ");
             scanf("%d, %d", &iptX, &iptY);
-            inputValidity(iptX, iptY, 1, 0);
             printf("%d %d", iptX, iptY);
             printf("To: ");
             scanf("%d, %d", &optX, &optY);

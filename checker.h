@@ -10,6 +10,4 @@ void checkerDisplay();
 
 int checkerWinning(int);
 
-void inputValidity(int x, int y, int player, int io);
-
 int checkerGame(int);
