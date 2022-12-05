@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 int winning = 0;
+int inputY = 0, outputY = 0;
 int board[17][25];
 int boardNum[17] = {1, 2, 3, 4, 13, 12, 11, 10, 9,
                     10, 11, 12, 13, 4, 3, 2, 1};
@@ -116,17 +117,205 @@ void checkerDisplay(){
 
 int checkerWinning(int input){
     if(input == 0){
-        return 0;
+        int a = 7;
+        int count = 0;
+        for(int i=5; i<9; i++){
+            for(int j=0; j<4; j++){
+                for(int k=0; k<a; k++){
+                    if(board[i][k]==1){
+                        count++;
+                    }
+                }
+            }
+            a--;
+        }
+        if(count==10){
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
     else if(input == 1){
-        return 1;
+        int a = 25;
+        int count = 0;
+        for(int i=5; i<9; i++){
+            for(int j=0; j<4; j++){
+                for(int k=0; k<a; k++){
+                    if(board[i][k]==2){
+                        count++;
+                    }
+                }
+            }
+            a--;
+        }
+        if(count==10){
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
     else if(input == 2){
-        return 2;
+        int a = 15;
+        int count = 0;
+        for(int i=13; i<18; i++){
+            for(int j=0; j<4; j++){
+                for(int k=0; k<a; k++){
+                    if(board[i][k]==3){
+                        count++;
+                    }
+                }
+            }
+            a--;
+        }
+        if(count==10){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+}
+
+int checkerValidity(int x, int y, int playerTurn, int io){
+    if(playerTurn == 1){
+        if(io == 0){
+            y += 1;
+            for(int i = 0; i < 25; i++){
+                if(board[x][i] != -1){
+                    y--;
+                }
+                if(y == 0){
+                    y = i;
+                    break;
+                }
+            }
+            if(board[x][y] == 3){
+                printf("Valid input!\n");
+                inputY = y;
+                return 0;
+            }
+            else{
+                printf("Invalid Input! Please enter again.\n");
+                return 1;
+            }
+        }
+        else if(io == 1){
+            y += 1;
+            for(int i = 0; i < 25; i++){
+                if(board[x][i] != -1){
+                    y--;
+                }
+                if(y == 0){
+                    y = i;
+                    break;
+                }
+            }
+            if(board[x][y] == 0){
+                printf("Valid input!\n");
+                outputY = y;
+                return 0;
+            }
+            else{
+                printf("Invalid Input! Please enter again.\n");
+                return 1;
+            }
+        }
+    }
+    else if(playerTurn == 2){
+        if(io == 0){
+            y += 1;
+            for(int i = 0; i < 25; i++){
+                if(board[x][i] != -1){
+                    y--;
+                }
+                if(y == 0){
+                    y = i;
+                    break;
+                }
+            }
+            if(board[x][y] == 2){
+                printf("Valid input!\n");
+                inputY = y;
+                return 0;
+            }
+            else{
+                printf("Invalid Input! Please enter again.\n");
+                return 1;
+            }
+        }
+        else if(io == 1){
+            y += 1;
+            for(int i = 0; i < 25; i++){
+                if(board[x][i] != -1){
+                    y--;
+                }
+                if(y == 0){
+                    y = i;
+                    break;
+                }
+            }
+            if(board[x][y] == 0){
+                printf("Valid input!\n");
+                outputY = y;
+                return 0;
+            }
+            else{
+                printf("Invalid Input! Please enter again.\n");
+                return 1;
+            }
+        }
     }
     else{
-        return 3;
+        if(io == 0){
+            y += 1;
+            for(int i = 0; i < 25; i++){
+                if(board[x][i] != -1){
+                    y--;
+                }
+                if(y == 0){
+                    y = i;
+                    break;
+                }
+            }
+            if(board[x][y] == 1){
+                printf("Valid input!\n");
+                inputY = y;
+                return 0;
+            }
+            else{
+                printf("Invalid Input! Please enter again.\n");
+                return 1;
+            }
+        }
+        else if(io == 1){
+            y += 1;
+            for(int i = 0; i < 25; i++){
+                if(board[x][i] != -1){
+                    y--;
+                }
+                if(y == 0){
+                    y = i;
+                    break;
+                }
+            }
+            if(board[x][y] == 0){
+                printf("Valid input!\n");
+                outputY = y;
+                return 0;
+            }
+            else{
+                printf("Invalid Input! Please enter again.\n");
+                return 1;
+            }
+        }
     }
+}
+
+void checkerMove(int inputX, int outputX, int color){
+    board[inputX][inputY] = 0;
+    board[outputX][outputY] = color;
 }
 
 int checkerGame(int input){
@@ -139,29 +328,51 @@ int checkerGame(int input){
             printf("Yellow Player Turn:\n");
             printf("From: ");
             scanf("%d, %d", &iptX, &iptY);
-            printf("%d %d", iptX, iptY);
+            while(checkerValidity(iptX, iptY, 1, 0) != 0){
+                printf("From: ");
+                scanf("%d, %d", &iptX, &iptY);
+            }
             printf("To: ");
             scanf("%d, %d", &optX, &optY);
+            while(checkerValidity(optX, optY, 1, 1) != 0){
+                printf("To: ");
+                scanf("%d, %d", &optX, &optY);
+            }
+            checkerMove(iptX, optX, 3);
             break;
-
         case 2:
             //Green's Turn
             printf("Green Player Turn:\n");
             printf("From: ");
             scanf("%d, %d", &iptX, &iptY);
+            while(checkerValidity(iptX, iptY, 2, 0) != 0){
+                printf("From: ");
+                scanf("%d, %d", &iptX, &iptY);
+            }
             printf("To: ");
             scanf("%d, %d", &optX, &optY);
+            while(checkerValidity(optX, optY, 2, 1) != 0){
+                printf("To: ");
+                scanf("%d, %d", &optX, &optY);
+            }
+            checkerMove(iptX, optX, 2);
             break;
         case 0:
             //Red's Turn
             printf("Red Player Turn:\n");
             printf("From: ");
             scanf("%d, %d", &iptX, &iptY);
+            while(checkerValidity(iptX, iptY, 0, 0) != 0){
+                printf("To: ");
+                scanf("%d, %d", &optX, &optY);
+            }
             printf("To: ");
             scanf("%d, %d", &optX, &optY);
-            break;
-        default:
-            printf("Error.");
+            while(checkerValidity(optX, optY, 0, 1) != 0){
+                printf("To: ");
+                scanf("%d, %d", &optX, &optY);
+            }
+            checkerMove(iptX, optX, 1);
             break;
     }
     if(checkerWinning(playerTurn) == 1){

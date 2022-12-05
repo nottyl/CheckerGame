@@ -7,6 +7,7 @@ int main(){
     checkerDisplay();
     while(winning!=1){
         playerTurn = checkerGame(playerTurn);
+        checkerDisplay();
     }
     printf("The Winner is ");
     if(playerTurn%3==1){
