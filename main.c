@@ -3,10 +3,12 @@
 
 int main(){
     int playerTurn = 1;
+    printf("\e[1;1H\e[2J");
     checkerInitialize();
     checkerDisplay();
     while(winning!=1){
         playerTurn = checkerGame(playerTurn);
+        printf("\e[1;1H\e[2J");
         checkerDisplay();
     }
     printf("The Winner is ");
