@@ -445,8 +445,8 @@ int checkerGame(int input){
             printf("From: ");
             scanf("%d, %d", &iptX, &iptY);
             while(checkerValidity(iptX, iptY, 0, 0) != 0){
-                printf("To: ");
-                scanf("%d, %d", &optX, &optY);
+                printf("From: ");
+                scanf("%d, %d", &iptX, &iptY);
             }
             printf("To: ");
             scanf("%d, %d", &optX, &optY);
