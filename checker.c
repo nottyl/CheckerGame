@@ -1,3 +1,4 @@
+//Made by @nottyl
 #include "checker.h"
 #include <stdio.h>
 

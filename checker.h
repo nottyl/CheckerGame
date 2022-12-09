@@ -1,3 +1,4 @@
+//Made by @nottyl
 #pragma once
 
 extern int winning;
