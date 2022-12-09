@@ -186,15 +186,36 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                 }
             }
             if(board[x][y] == 3){
-                if(board[x][y+2]==0||board[x][y-2]==0||board[x+1][y-1]==0||board[x+1][y+1]==0||board[x-1][y+1]==0||board[x-1][y-1]==0){
+                if(board[x][y+2]==0||board[x][y-2]==0||board[x+1][y-1]==0||board[x+1][y+1]==0){
                     inputX = x;
                     inputY = y;
                     return 0;
                 }
-                else if(board[x][y+4]==0 || board[x][y-4]==0 || board[x+2][y-1]==0 || board[x+2][y+1]==0 || board[x-2][y+1]==0 || board[x-2][y-1]==0){
+                else if(board[x][y+4]==0 || board[x][y-4]==0){
                     inputX = x;
                     inputY = y;
                     return 0;
+                }
+                else if(x>1){
+                    if(board[x+2][y-2]==0 || board[x+2][y+2]==0 || board[x-2][y+2]==0 || board[x-2][y-2]==0){
+                        inputX = x;
+                        inputY = y;
+                        return 0;
+                    }
+                    else{
+                        printf("No moves can be made! Please enter again.\n");
+                        return 1;
+                    }
+                }
+                else if(x>0){
+                    if(board[x-1][y+1]==0||board[x-1][y-1]==0){
+                        inputX = x;
+                        inputY = y;
+                        return 0;
+                    }else{
+                        printf("No moves can be made! Please enter again.\n");
+                        return 1;
+                    }
                 }
                 else{
                     printf("No moves can be made! Please enter again.\n");
@@ -257,7 +278,7 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                     inputY = y;
                     return 0;
                 }
-                else if(board[x][y+4]==0 || board[x][y-4]==0 || board[x+2][y-1]==0 || board[x+2][y+1]==0 || board[x-2][y+1]==0 || board[x-2][y-1]==0){
+                else if(board[x][y+4]==0 || board[x][y-4]==0 || board[x+2][y-2]==0 || board[x+2][y+2]==0 || board[x-2][y+2]==0 || board[x-2][y-2]==0){
                     inputX = x;
                     inputY = y;
                     return 0;
@@ -323,7 +344,7 @@ int checkerValidity(int x, int y, int playerTurn, int io){
                     inputY = y;
                     return 0;
                 }
-                else if(board[x][y+4]==0 || board[x][y-4]==0 || board[x+2][y-1]==0 || board[x+2][y+1]==0 || board[x-2][y+1]==0 || board[x-2][y-1]==0){
+                else if(board[x][y+4]==0 || board[x][y-4]==0 || board[x+2][y-2]==0 || board[x+2][y+2]==0 || board[x-2][y+2]==0 || board[x-2][y-2]==0){
                     inputX = x;
                     inputY = y;
                     return 0;
