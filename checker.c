@@ -94,6 +94,7 @@ void checkerInitialize(){
 
 void checkerDisplay(){
     //-1 = Gap, 0 = Space, 1 = Red, 2 = Green, 3 = Yellow
+
     for(int i = 0; i < 17; i++){
         for(int j = 0; j < 25; j++){
             if(board[i][j] == -1){
