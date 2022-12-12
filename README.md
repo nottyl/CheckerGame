@@ -22,3 +22,9 @@ This is an assignment for my Computer Programming class.
 4. You can only jump over **one** marble each move.
 5. The input (the marble you want to move, the destination) will have to be entered in coordinates in the format of x,y. Please check the reference screenshot below:
 ![Screenshot 2022-12-11 at 21 54 51](https://user-images.githubusercontent.com/71718049/206907793-cfdb35a0-c3ef-4ecc-8522-ca83ec7e318a.png)
+
+## JetBrain IDE Users
+You can **fork this project** then open it via CLion.   
+
+## Known Issues
+- The program crashes when input is not numerical values.
