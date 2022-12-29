@@ -172,6 +172,9 @@ int checkerWinning(int input){
             return 0;
         }
     }
+    else{
+        return 1;
+    }
 }
 
 int checkerValidity(int x, int y, int playerTurn, int io){
@@ -394,6 +397,7 @@ int checkerValidity(int x, int y, int playerTurn, int io){
             }
         }
     }
+    return 1;
 }
 
 void checkerMove(int iX, int oX, int color){
@@ -404,22 +408,28 @@ void checkerMove(int iX, int oX, int color){
 int checkerGame(int input){
     int playerTurn = input % 3;
     int iptX = 0, iptY = 0, optX = 0, optY = 0;
+    int inputs = 0;
 
     switch(playerTurn){
         case 1:
             //Yellow's Turn
             printf("Yellow Player Turn:\n");
             printf("From: ");
-            scanf("%d, %d", &iptX, &iptY);
-            while(checkerValidity(iptX, iptY, 1, 0) != 0){
+            char input[20];
+            scanf("%s", input);
+            inputs = sscanf(input, "%d, %d", &iptX, &iptY);
+            while(inputs != 2 || checkerValidity((int)iptX, (int)iptY, 1, 0) != 0){
                 printf("From: ");
-                scanf("%d, %d", &iptX, &iptY);
+                scanf("%s", input);
+                inputs = sscanf(input, "%d, %d", &iptX, &iptY);
             }
             printf("To: ");
-            scanf("%d, %d", &optX, &optY);
-            while(checkerValidity(optX, optY, 1, 1) != 0){
+            scanf("%s", input);
+            inputs = sscanf(input, "%d, %d", &optX, &optY);
+            while(inputs != 2 || checkerValidity(optX, optY, 1, 1) != 0){
                 printf("To: ");
-                scanf("%d, %d", &optX, &optY);
+                scanf("%s", input);
+                inputs = sscanf(input, "%d, %d", &optX, &optY);
             }
             checkerMove(iptX, optX, 3);
             break;
@@ -427,16 +437,20 @@ int checkerGame(int input){
             //Green's Turn
             printf("Green Player Turn:\n");
             printf("From: ");
-            scanf("%d, %d", &iptX, &iptY);
-            while(checkerValidity(iptX, iptY, 2, 0) != 0){
+            scanf("%s", input);
+            inputs = sscanf(input, "%d, %d", &iptX, &iptY);
+            while(inputs != 2 || checkerValidity(iptX, iptY, 2, 0) != 0){
                 printf("From: ");
-                scanf("%d, %d", &iptX, &iptY);
+                scanf("%s", input);
+                inputs = sscanf(input, "%d, %d", &iptX, &iptY);
             }
             printf("To: ");
-            scanf("%d, %d", &optX, &optY);
-            while(checkerValidity(optX, optY, 2, 1) != 0){
+            scanf("%s", input);
+            inputs = sscanf(input, "%d, %d", &optX, &optY);
+            while(inputs != 2 || checkerValidity(optX, optY, 2, 1) != 0){
                 printf("To: ");
-                scanf("%d, %d", &optX, &optY);
+                scanf("%s", input);
+                inputs = sscanf(input, "%d, %d", &optX, &optY);
             }
             checkerMove(iptX, optX, 2);
             break;
@@ -444,16 +458,20 @@ int checkerGame(int input){
             //Red's Turn
             printf("Red Player Turn:\n");
             printf("From: ");
-            scanf("%d, %d", &iptX, &iptY);
-            while(checkerValidity(iptX, iptY, 0, 0) != 0){
+            scanf("%s", input);
+            inputs = sscanf(input, "%d, %d", &iptX, &iptY);
+            while(inputs != 2 || checkerValidity(iptX, iptY, 0, 0) != 0){
                 printf("From: ");
-                scanf("%d, %d", &iptX, &iptY);
+                scanf("%s", input);
+                inputs = sscanf(input, "%d, %d", &iptX, &iptY);
             }
             printf("To: ");
-            scanf("%d, %d", &optX, &optY);
-            while(checkerValidity(optX, optY, 0, 1) != 0){
+            scanf("%s", input);
+            inputs = sscanf(input, "%d, %d", &optX, &optY);
+            while(inputs != 2 || checkerValidity(optX, optY, 0, 1) != 0){
                 printf("To: ");
-                scanf("%d, %d", &optX, &optY);
+                scanf("%s", input);
+                inputs = sscanf(input, "%d, %d", &optX, &optY);
             }
             checkerMove(iptX, optX, 1);
             break;
