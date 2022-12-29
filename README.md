@@ -27,4 +27,4 @@ This is an assignment for my Computer Programming class.
 You can **fork this project** then open it via CLion.   
 
 ## Known Issues
-- The program crashes when input is not numerical values.
+- The program crashes when input is not numerical values. (Fixed in the latest version)
