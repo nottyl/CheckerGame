@@ -28,3 +28,4 @@ You can **fork this project** then open it via CLion.
 
 ## Known Issues
 - The program crashes when input is not numerical values. (Fixed in the latest version)
+- The program needs some tidying up and fix the duplicate `From:` display when detected non-numerical values
