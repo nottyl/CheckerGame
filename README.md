@@ -3,16 +3,6 @@
 Made with C.   
 This is an assignment for my Computer Programming class.
 
-## How to Use
-
-1. Go to `Release`, click on the latest release version
-2. Download the needed file as written in the release page
-3. Put the files in the same directory and open Terminal
-4. Enter the commands as written in the release page
-
-| :bangbang: | Please report if there's any bug! Thank you :) |
-|:----------:|:-----------------------------------------------|
-
 ## How to Play
 
 1. Play it as normal Chinese Checkers, you'll have to move all your marbles to the opposite side of the star to win.
